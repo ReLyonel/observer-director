@@ -1,8 +1,12 @@
-# Archive of Observers
+# Observer Director Pro
 
-A Foundry VTT module that creates a clean, cinematic **Observer Window** — perfect for streaming, recording, or showing your table a polished view without Foundry's GM clutter.
+## Migración desde stream-director
+> Si usabas stream-director, desinstálalo antes de instalar Observer Director Pro.  
+> Los ajustes de configuración NO se migran automáticamente en esta versión.
 
-Designed for Foundry VTT **v12 and v13**.
+Observer Director Pro es un módulo de Foundry VTT que crea una **Observer Window** limpia y cinemática para streaming y partidas en directo.
+
+Diseñado para Foundry VTT **v13.351**.
 
 ---
 
@@ -10,82 +14,65 @@ Designed for Foundry VTT **v12 and v13**.
 
 - **Observer Mode**
   - Launch an overlay-only window with a single macro.
-  - Hides all GM UI chrome (sidebar, navigation, controls, etc.).
+  - Hides GM UI chrome (sidebar, navigation, controls, etc.).
   - Scales cleanly across 1080p, 1440p, and 4K.
 
-- **Scene Banner**
-  - Animated overlay showing the current scene name.
-  - Font and duration are configurable.
+- **Anchor Vision Panel**
+  - Floating panel to lock camera focus to a friendly character token.
+  - Includes anti-unanchor hook for Levels compatibility.
 
-- **Player HUD**
-  - Displays active players’ character cards.
-  - Shows portrait, HP, AC, race/class, and level.
-  - Includes condition icons (or JB2A animations if available).
-  - Flash overlay for damage/healing events.
-  - Death save tracking.
+- **Stream Mode**
+  - Toggle clean stream UI via API (`ObserverDirector.setStreamMode(true)`) or URL (`?stream=true`).
+  - Keeps Ginzzzu Portraits visible with explicit CSS exclusions.
 
-- **GM Card**
-  - Optional “Game Master” card with portrait, title, and scene name.
-
-- **Chat Bubbles**
-  - Non-roll messages appear as floating speech bubbles above player cards.
-  - Narrator Tools messages are automatically ignored (to avoid duplicates).
-
-- **Dice Roll Overlay**
-  - Quick roll banner overlay for standard chat dice rolls.
-  - Scales up automatically for higher resolutions.
+- **Scene Banner / Player HUD / Chat Bubbles / Roll Overlay**
+  - Existing observer features remain available.
 
 - **Epic Rolls 5e Integration**
-  - Full compatibility with the [Epic Rolls 5e](https://foundryvtt.com/packages/epic-rolls-5e) module.
-  - Observer mirrors **dispatch**, **update**, **end**, and **toggle** events.
-  - Ensures cinematic skill challenges, contests, and initiative rolls are visible to your audience.
+  - Observer mirrors dispatch/update/end/toggle events.
 
 - **JB2A Integration (optional)**
   - Configure animated condition effects.
-  - Supports damage/heal animations on player HUD cards.
 
 - **Camera Sync**
-  - Observer camera follows the GM’s view via socketlib.
-  - Toggle on/off via settings.
+  - Observer camera follows GM view via socketlib.
 
 ---
 
 ## ⚙️ Settings
 
-Accessible under **Game Settings → Module Settings → Archive of Observers**.
-
-- **Enable Observer Mode** — Controls whether the macro is created.
-- **Observer Window Size** — Choose 1080p / 1440p / 4K.
-- **Enable Camera Follow** — Toggle GM camera sync.
-- **Enable GM Card** — Show/hide GM card in HUD.
-- **GM Card Image & Title** — Customize GM card.
-- **Scene Banner Duration & Font** — Control banner timing and style.
-- **Chat Bubble Duration** — How long chat bubbles remain visible.
-- **JB2A Configuration** — Assign custom animations for damage, healing, and conditions.
+Accessible under **Game Settings → Module Settings → Observer Director Pro**.
 
 ---
 
 ## 🖥️ Usage
 
 1. As GM, launch Foundry normally.
-2. Use the **“Open Observer Window”** macro (auto-created when module is enabled).
-3. The observer opens in a new window with `?observer=true` in the URL.
-4. Stream, screen-capture, or display this window for players.
+2. Use the **“Open Observer Window”** macro.
+3. The observer opens in a new window with `?observer=true`.
+4. Optional stream bootstrap:
+   - `?stream=true`
+   - `?stream=true&anchor=true`
 
 ---
 
 ## 📦 Installation
 
-Add the following to your Foundry VTT **module installation**:
+Manifest URL:
+
+`https://raw.githubusercontent.com/ReLyonel/observer-director/main/module.json`
+
+Or install with module metadata:
 
 ```json
 {
-  "id": "archive-of-observers",
-  "title": "Archive of Observers",
-  "description": "Cinematic observer window for streaming and live play.",
+  "id": "observer-director",
+  "title": "Observer Director Pro",
+  "description": "Ventana de observador cinemática para Foundry VTT.",
   "version": "1.0.0",
   "compatibility": {
-    "minimum": 12,
-    "verified": 13
+    "minimum": "13",
+    "verified": "13.351"
   }
 }
+```

@@ -56,7 +56,7 @@ export async function renderPlayerHud() {
   const players = users.map(user => formatPlayerData(user));
 
   const hudHtml = await renderFn(
-    "modules/archive-of-observers/templates/player-hud.hbs",
+    "modules/observer-director/templates/player-hud.hbs",
     { players }
   );
 
@@ -81,11 +81,11 @@ export async function renderPlayerHud() {
  * @returns {Promise<string>} HTML string or empty string if disabled
  */
 async function renderGMCard() {
-  const enabled = game.settings.get("archive-of-observers", "gmCardEnabled");
+  const enabled = game.settings.get("observer-director", "gmCardEnabled");
   if (!enabled) return "";
 
-  const portrait = game.settings.get("archive-of-observers", "gmCardImage");
-  const title = game.settings.get("archive-of-observers", "gmCardTitle");
+  const portrait = game.settings.get("observer-director", "gmCardImage");
+  const title = game.settings.get("observer-director", "gmCardTitle");
   const scene = game.scenes.current?.navName || game.scenes.current?.name || "";
   const gmUser = game.users.find(u => u.isGM);
 
@@ -93,7 +93,7 @@ async function renderGMCard() {
   const shadowColor = hexToRgba(borderColor, 0.7);
 
   return await renderFn(
-    "modules/archive-of-observers/templates/gm-card.hbs",
+    "modules/observer-director/templates/gm-card.hbs",
     { portrait, title, scene, borderColor, shadowColor, gmUserId: gmUser?.id }
   );
 }
@@ -138,7 +138,7 @@ function formatPlayerData(user) {
 async function buildPlayerCard(user) {
   const data = formatPlayerData(user);
   return await renderFn(
-    "modules/archive-of-observers/templates/player-card.hbs",
+    "modules/observer-director/templates/player-card.hbs",
     data
   );
 }
@@ -318,7 +318,7 @@ Hooks.on("createChatMessage", (msg) => {
   }
 
   // --- Remove after duration
-  const duration = game.settings.get("archive-of-observers", "chatBubbleDuration") || 10;
+  const duration = game.settings.get("observer-director", "chatBubbleDuration") || 10;
   setTimeout(() => {
     bubble.classList.add("fade-out");
     setTimeout(() => bubble.remove(), 500);
@@ -417,8 +417,8 @@ Hooks.once("ready", () => {
  */
 function playJB2AEffect(card, type) {
   const file = (type === "damage")
-    ? game.settings.get("archive-of-observers", "jb2aDamage")
-    : game.settings.get("archive-of-observers", "jb2aHeal");
+    ? game.settings.get("observer-director", "jb2aDamage")
+    : game.settings.get("observer-director", "jb2aHeal");
 
   if (!file) return;
 

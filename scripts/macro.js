@@ -4,7 +4,7 @@
  * - Reads settings like "enabled" and "windowSize" (registered elsewhere).
  */
 
-const MODULE_ID = "archive-of-observers";
+const MODULE_ID = "observer-director";
 const MACRO_NAME = "Open Observer Window";
 
 /**
@@ -44,7 +44,7 @@ async function ensureObserverMacro() {
       type: "script",
       scope: "global",
       command,
-      img: "modules/archive-of-observers/assets/LogoSC.jpg",
+      img: "modules/observer-director/assets/LogoSC.jpg",
       ownership: { default: OBS }
     });
     ui.notifications?.info("📺 Observer Window macro created.");
@@ -67,7 +67,7 @@ async function ensureObserverMacro() {
 function buildMacroCommand() {
   return `
 /**
- * Archive of Observers — Open Observer Window
+ * Stream Director — Open Observer Window
  * - Reads "Observer Window Size" from settings.
  * - Appends ?observer=true so the ES module boots in observer mode.
  */

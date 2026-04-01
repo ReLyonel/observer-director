@@ -1,0 +1,18 @@
+{
+  "OBSERVER_DIRECTOR": {
+    "anchorApp": {
+      "title": "Scene Director — Vision Anchor",
+      "selectPlaceholder": "— Select a character —",
+      "btnAnchor": "Anchor Vision",
+      "btnRelease": "Release",
+      "noTokens": "No characters in the scene",
+      "anchoredTo": "Anchored to: {name}",
+      "released": "Anchor released"
+    },
+    "streamMode": {
+      "activated": "Stream mode enabled",
+      "deactivated": "Stream mode disabled",
+      "urlParam": "Enabled by URL parameter"
+    }
+  }
+}

@@ -8,7 +8,7 @@ export class JB2ASettingsForm extends FormApplication {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "jb2a-settings-form",
             title: "JB2A Configuration",
-            template: "modules/archive-of-observers/templates/jb2a-settings.hbs",
+            template: "modules/observer-director/templates/jb2a-settings.hbs",
             width: 800,
             height: "auto",
             classes: ["form", "sheet", "settings"],
@@ -18,16 +18,16 @@ export class JB2ASettingsForm extends FormApplication {
 
     getData() {
         return {
-            damage: game.settings.get("archive-of-observers", "jb2aDamage"),
-            heal: game.settings.get("archive-of-observers", "jb2aHeal"),
-            blinded: game.settings.get("archive-of-observers", "jb2aBlinded"),
-            poisoned: game.settings.get("archive-of-observers", "jb2aPoisoned"),
-            stunned: game.settings.get("archive-of-observers", "jb2aStunned"),
-            unconscious: game.settings.get("archive-of-observers", "jb2aUnconscious"),
-            frightened: game.settings.get("archive-of-observers", "jb2aFrightened"),
-            restrained: game.settings.get("archive-of-observers", "jb2aRestrained"),
-            prone: game.settings.get("archive-of-observers", "jb2aProne"),
-            charmed: game.settings.get("archive-of-observers", "jb2aCharmed")
+            damage: game.settings.get("observer-director", "jb2aDamage"),
+            heal: game.settings.get("observer-director", "jb2aHeal"),
+            blinded: game.settings.get("observer-director", "jb2aBlinded"),
+            poisoned: game.settings.get("observer-director", "jb2aPoisoned"),
+            stunned: game.settings.get("observer-director", "jb2aStunned"),
+            unconscious: game.settings.get("observer-director", "jb2aUnconscious"),
+            frightened: game.settings.get("observer-director", "jb2aFrightened"),
+            restrained: game.settings.get("observer-director", "jb2aRestrained"),
+            prone: game.settings.get("observer-director", "jb2aProne"),
+            charmed: game.settings.get("observer-director", "jb2aCharmed")
         };
     }
 
@@ -56,7 +56,7 @@ export class JB2ASettingsForm extends FormApplication {
 
     async _updateObject(event, formData) {
         for (let [k, v] of Object.entries(formData)) {
-            await game.settings.set("archive-of-observers", k, v);
+            await game.settings.set("observer-director", k, v);
         }
     }
 }

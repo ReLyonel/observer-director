@@ -15,7 +15,7 @@ export async function loadOverlay() {
 
     try {
         // Adjust the path if your template lives elsewhere
-        const html = await renderTemplate("modules/archive-of-observers/templates/observer.hbs", {});
+        const html = await renderTemplate("modules/observer-director/templates/observer.hbs", {});
         const wrapper = document.createElement("div");
         wrapper.id = WRAPPER_ID;
         wrapper.innerHTML = html;

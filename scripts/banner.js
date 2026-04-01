@@ -24,11 +24,11 @@ export function showSceneBanner(scene) {
     banner.classList.add("show");
 
     // Read the configured duration in seconds, convert to ms
-    const duration = game.settings.get("archive-of-observers", "bannerDuration");
+    const duration = game.settings.get("observer-director", "bannerDuration");
     const timeout = Math.max(1, duration) * 1000;
 
     // Apply the configured font
-    const font = game.settings.get("archive-of-observers", "bannerFont");
+    const font = game.settings.get("observer-director", "bannerFont");
     text.style.fontFamily = font;
 
 
