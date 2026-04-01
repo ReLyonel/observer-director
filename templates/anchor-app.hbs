@@ -1,0 +1,44 @@
+{{!--
+  INSTRUCCIONES DE USO — AnchorVisionApp
+  ----------------------------------------
+  1. Abre el panel desde: Controles de Escena > ícono de cámara, o ejecuta en consola:
+     game.modules.get('stream-director').api.openAnchorPanel()
+
+  2. Selecciona el personaje del jugador cuya posición quieres mantener como foco de cámara.
+
+  3. Haz clic en "Fijar Visión". La cámara se centrará en ese token y lo mantendrá
+     seleccionado incluso si haces clic accidentalmente en otras partes del mapa.
+     Esto evita que el módulo Levels desplace la cámara verticalmente al perder la
+     elevación de referencia del token.
+
+  4. Haz clic en "Liberar" para desactivar el anclaje y recuperar control normal.
+
+  MODO STREAM:
+  - Actívalo manualmente: StreamDirector.setStreamMode(true)
+  - Actívalo por URL:     https://tu-servidor/game?stream=true
+  - Con anchor panel:     https://tu-servidor/game?stream=true&anchor=true
+  - Los retratos de Ginzzzu Portraits siempre permanecen visibles en este modo.
+--}}
+<form class="anchor-vision-form" autocomplete="off">
+  <div class="form-group">
+    <select name="anchor-token">
+      <option value="">{{selectPlaceholder}}</option>
+      {{#if hasTokens}}
+        {{#each tokens as |token|}}
+          <option value="{{token.id}}">{{token.name}}</option>
+        {{/each}}
+      {{else}}
+        <option value="" disabled>{{noTokensLabel}}</option>
+      {{/if}}
+    </select>
+  </div>
+
+  <div class="form-group" style="display:flex; gap: 0.5rem; margin-top: 0.5rem;">
+    <button type="button" data-action="anchor" {{#unless canAnchor}}disabled{{/unless}}>{{anchorLabel}}</button>
+    <button type="button" data-action="release">{{releaseLabel}}</button>
+  </div>
+
+  {{#if statusText}}
+    <p style="margin-top: 0.5rem;">{{statusText}}</p>
+  {{/if}}
+</form>

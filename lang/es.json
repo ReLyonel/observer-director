@@ -1,0 +1,18 @@
+{
+  "STREAM_DIRECTOR": {
+    "anchorApp": {
+      "title": "Director de Escena — Anclaje de Visión",
+      "selectPlaceholder": "— Selecciona un personaje —",
+      "btnAnchor": "Fijar Visión",
+      "btnRelease": "Liberar",
+      "noTokens": "No hay personajes en la escena",
+      "anchoredTo": "Anclado a: {name}",
+      "released": "Anclaje liberado"
+    },
+    "streamMode": {
+      "activated": "Modo Stream activado",
+      "deactivated": "Modo Stream desactivado",
+      "urlParam": "Activado por parámetro de URL"
+    }
+  }
+}

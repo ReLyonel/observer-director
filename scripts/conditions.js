@@ -43,8 +43,8 @@ export function applyConditionEffects(card, actor) {
 
     // ✅ Only fetch if registered
     let animFile = null;
-    if (game.settings.settings.has(`archive-of-observers.${settingKey}`)) {
-      animFile = game.settings.get("archive-of-observers", settingKey);
+    if (game.settings.settings.has(`stream-director.${settingKey}`)) {
+      animFile = game.settings.get("stream-director", settingKey);
     }
 
     // --- JB2A animation path ---

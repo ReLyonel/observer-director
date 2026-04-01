@@ -1,8 +1,8 @@
 /**
  * @file scripts/main.js
- * @description Archive of Observers — ES module entry.
+ * @description Stream Director — ES module entry.
  * Wires up settings, macro creation, and observer-mode boot.
- * Foundry v12/v13 compatible. No TypeScript.
+ * Foundry v13 compatible. No TypeScript.
  *
  * How it works (simple version):
  * - GM window: broadcasts camera changes.
@@ -17,6 +17,8 @@ import { registerMacroHook } from "./macro.js";
 import { registerModuleSettings } from "./settings.js";
 import { registerRollOverlayHook } from "./rolls.js";
 import { renderPlayerHud } from "./playerHud.js";
+import { AnchorVisionApp, registerAnchorVisionApi, registerAnchorVisionControls } from "./anchor-vision-app.js";
+import { StreamDirector, registerStreamDirectorApi } from "./stream-director.js";
 
 /**
  * Foundry lifecycle: init
@@ -24,15 +26,19 @@ import { renderPlayerHud } from "./playerHud.js";
  * - Prepare the hook that creates the macro (on ready)
  */
 Hooks.once("init", async () => {
-  console.log("Observer | Initializing Archive of Observers (ESM)");
+  console.log("Stream Director | Initializing (ESM)");
+  const moduleId = "stream-director";
 
   // Register settings
   registerModuleSettings();
 
   // Register Handlebars partials
   loadTemplates([
-    "modules/archive-of-observers/templates/player-card.hbs"
+    `modules/${moduleId}/templates/player-card.hbs`,
+    `modules/${moduleId}/templates/anchor-app.hbs`
   ]);
+
+  registerAnchorVisionControls();
 });
 
 /**
@@ -130,4 +136,19 @@ Hooks.once("ready", async () => {
 
   // Start the camera sync layer for both windows.
   initCameraSync(isObserver);
+
+  registerAnchorVisionApi();
+  registerStreamDirectorApi();
+
+  // --- URL Params: Stream Director bootstrap (added additively) ---
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("stream") === "true") {
+    // Activar modo stream automáticamente
+    StreamDirector.setStreamMode(true);
+    // Opcional: abrir el anchor panel si también se pasa ?anchor=true
+    if (urlParams.get("anchor") === "true") {
+      new AnchorVisionApp().render(true);
+    }
+    console.log(`[stream-director] ${game.i18n.localize("STREAM_DIRECTOR.streamMode.urlParam")}.`);
+  }
 });

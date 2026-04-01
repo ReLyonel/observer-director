@@ -1,3 +1,15 @@
+## [2.0.0] — 2026-04-01
+### Renombrado
+- El módulo se renombra de `observers-director` a `stream-director`.
+### Añadido
+- `AnchorVisionApp`: panel flotante para anclar la cámara a un token de PC.
+- Hook `controlToken` anti-desanclaje para compatibilidad con Levels.
+- Modo Stream activable por URL con `?stream=true`.
+- Exclusión explícita de Ginzzzu Portraits en el CSS del modo stream.
+- Internacionalización completa al español (`lang/es.json`).
+### Sin cambios
+- Observer window, chat bubbles, roll overlays, Epic Rolls 5e, JB2A: sin modificaciones.
+
 # 🧭 Archive of Observers — v1.2.0
 > **Focus:** Enhanced Scene Banners, Card Customization, and Player Card Visibility Controls  
 
