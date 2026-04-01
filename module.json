@@ -1,8 +1,8 @@
 {
-  "id": "archive-of-observers",
-  "title": "Archive of Observers",
-  "description": "A cinematic observer window for Foundry VTT. Provides a clean, read-only display for streaming or live play, with player HUD, scene banners, chat bubbles, roll overlays, Epic Rolls 5e integration, and optional JB2A effects.",
-  "version": "1.3.1",
+  "id": "stream-director",
+  "title": "Stream Director",
+  "description": "Ventana de observador cinemática para Foundry VTT. Proporciona una visualización limpia para streaming y partidas en directo, con anclaje de visión, modo stream, compatibilidad con Ginzzzu Portraits y control de cámara avanzado.",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Shadowdrake Creations",
@@ -17,6 +17,11 @@
     "styles/stream-director.css"
   ],
   "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
     {
       "lang": "es",
       "name": "Español",
@@ -33,13 +38,13 @@
     ]
   },
   "compatibility": {
-    "minimum": "12",
+    "minimum": "13",
     "verified": "13.351"
   },
   "socket": true,
-  "url": "https://github.com/DamondSD/archive-of-observers",
-  "manifest": "https://raw.githubusercontent.com/DamondSD/archive-of-observers/main/module.json",
-  "download": "https://github.com/DamondSD/archive-of-observers/releases/download/v1.3.1/archive-of-observers-v1.3.1.zip",
+  "url": "https://github.com/ReLyonel/stream-director",
+  "manifest": "https://raw.githubusercontent.com/ReLyonel/stream-director/main/module.json",
+  "download": "https://github.com/ReLyonel/stream-director/releases/latest/download/module.zip",
   "license": "MIT",
   "flags": {}
 }

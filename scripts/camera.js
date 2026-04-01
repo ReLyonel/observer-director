@@ -5,7 +5,7 @@
  * - Works whether socketlib is ready before/after our code runs.
  */
 
-const MODULE_ID = "archive-of-observers";
+const MODULE_ID = "stream-director";
 let socket = null;
 
 /** Optional debug logs for scene/canvas lifecycle. */
@@ -49,7 +49,7 @@ export function initCameraSync(isObserver) {
 function _ensureSocketlibReady(done) {
   const mod = game.modules.get("socketlib");
   if (!mod || !mod.active) {
-    ui.notifications?.error("Archive of Observers: socketlib is required and not active.");
+    ui.notifications?.error("Stream Director: socketlib is required and not active.");
     console.error("Observer | socketlib missing/disabled");
     return;
   }
@@ -74,7 +74,7 @@ function _ensureSocketlibReady(done) {
       finish();
     } else if (Date.now() - startedAt > 4000) {
       clearInterval(poll);
-      ui.notifications?.error("Archive of Observers: socketlib did not initialize.");
+      ui.notifications?.error("Stream Director: socketlib did not initialize.");
       console.error("Observer | socketlib failed to initialize");
     }
   }, 100);
@@ -167,7 +167,7 @@ async function _applyCamera(msg) {
   if (!isObserver) return;
 
   // ✅ Skip if follow disabled
-  const followEnabled = game.settings.get("archive-of-observers", "cameraFollow");
+  const followEnabled = game.settings.get("stream-director", "cameraFollow");
   if (!followEnabled) return;
 
   const myScene = canvas?.scene?.id ?? null;

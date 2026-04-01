@@ -2,7 +2,7 @@
   INSTRUCCIONES DE USO — AnchorVisionApp
   ----------------------------------------
   1. Abre el panel desde: Controles de Escena > ícono de cámara, o ejecuta en consola:
-     game.modules.get('observers-director').api.openAnchorPanel()
+     game.modules.get('stream-director').api.openAnchorPanel()
 
   2. Selecciona el personaje del jugador cuya posición quieres mantener como foco de cámara.
 
@@ -34,7 +34,7 @@
   </div>
 
   <div class="form-group" style="display:flex; gap: 0.5rem; margin-top: 0.5rem;">
-    <button type="button" data-action="anchor">{{anchorLabel}}</button>
+    <button type="button" data-action="anchor" {{#unless canAnchor}}disabled{{/unless}}>{{anchorLabel}}</button>
     <button type="button" data-action="release">{{releaseLabel}}</button>
   </div>
 

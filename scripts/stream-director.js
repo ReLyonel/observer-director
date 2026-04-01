@@ -2,7 +2,7 @@
  * INSTRUCCIONES DE USO — AnchorVisionApp
  * ----------------------------------------
  * 1. Abre el panel desde: Controles de Escena > ícono de cámara, o ejecuta en consola:
- *    game.modules.get('observers-director').api.openAnchorPanel()
+ *    game.modules.get('stream-director').api.openAnchorPanel()
  *
  * 2. Selecciona el personaje del jugador cuya posición quieres mantener como foco de cámara.
  *
@@ -20,12 +20,7 @@
  * - Los retratos de Ginzzzu Portraits siempre permanecen visibles en este modo.
  */
 
-const FALLBACK_MODULE_ID = "archive-of-observers";
-
-function getModuleId() {
-  if (game.modules.get("observers-director")) return "observers-director";
-  return FALLBACK_MODULE_ID;
-}
+const MODULE_ID = "stream-director";
 
 export class StreamDirector {
   static setStreamMode(active) {
@@ -33,8 +28,8 @@ export class StreamDirector {
     document.body.classList.toggle("stream-mode", isActive);
 
     const key = isActive
-      ? "OBSERVERS_DIRECTOR.streamMode.activated"
-      : "OBSERVERS_DIRECTOR.streamMode.deactivated";
+      ? "STREAM_DIRECTOR.streamMode.activated"
+      : "STREAM_DIRECTOR.streamMode.deactivated";
 
     ui.notifications?.info(game.i18n.localize(key));
     Hooks.callAll("streamModeChanged", isActive);
@@ -43,7 +38,7 @@ export class StreamDirector {
 }
 
 export function registerStreamDirectorApi() {
-  const module = game.modules.get(getModuleId());
+  const module = game.modules.get(MODULE_ID);
   if (!module) return;
 
   module.api = {
@@ -53,4 +48,5 @@ export function registerStreamDirectorApi() {
   };
 
   globalThis.StreamDirector = StreamDirector;
+  // Alias legacy: game.modules.get('observers-director') ya no es válido tras el renombrado.
 }

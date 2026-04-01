@@ -1,8 +1,8 @@
 /**
  * @file scripts/main.js
- * @description Archive of Observers — ES module entry.
+ * @description Stream Director — ES module entry.
  * Wires up settings, macro creation, and observer-mode boot.
- * Foundry v12/v13 compatible. No TypeScript.
+ * Foundry v13 compatible. No TypeScript.
  *
  * How it works (simple version):
  * - GM window: broadcasts camera changes.
@@ -26,8 +26,8 @@ import { StreamDirector, registerStreamDirectorApi } from "./stream-director.js"
  * - Prepare the hook that creates the macro (on ready)
  */
 Hooks.once("init", async () => {
-  console.log("Observer | Initializing Archive of Observers (ESM)");
-  const moduleId = game.modules.get("observers-director") ? "observers-director" : "archive-of-observers";
+  console.log("Stream Director | Initializing (ESM)");
+  const moduleId = "stream-director";
 
   // Register settings
   registerModuleSettings();
@@ -149,6 +149,6 @@ Hooks.once("ready", async () => {
     if (urlParams.get("anchor") === "true") {
       new AnchorVisionApp().render(true);
     }
-    console.log(`[observers-director] ${game.i18n.localize("OBSERVERS_DIRECTOR.streamMode.urlParam")}.`);
+    console.log(`[stream-director] ${game.i18n.localize("STREAM_DIRECTOR.streamMode.urlParam")}.`);
   }
 });

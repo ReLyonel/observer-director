@@ -2,7 +2,7 @@
  * INSTRUCCIONES DE USO — AnchorVisionApp
  * ----------------------------------------
  * 1. Abre el panel desde: Controles de Escena > ícono de cámara, o ejecuta en consola:
- *    game.modules.get('observers-director').api.openAnchorPanel()
+ *    game.modules.get('stream-director').api.openAnchorPanel()
  *
  * 2. Selecciona el personaje del jugador cuya posición quieres mantener como foco de cámara.
  *
@@ -44,11 +44,15 @@ body.stream-mode .app.window-app:not(.anchor-vision-app):not([class*="ginzzzu"])
 
 body.stream-mode [class*="ginzzzu"],
 body.stream-mode [id*="ginzzzu"],
-body.stream-mode [class*="ginzzzu"] *,
-body.stream-mode [id*="ginzzzu"] *,
 body.stream-mode #ginzzzu-portraits-container,
 body.stream-mode #ginzzzu-portraits-container * {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+body.stream-mode [class*="ginzzzu"] *,
+body.stream-mode [id*="ginzzzu"] * {
+  display: revert !important;
+  visibility: visible !important;
 }
