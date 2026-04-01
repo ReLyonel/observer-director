@@ -4,7 +4,7 @@
  * - Reads settings like "enabled" and "windowSize" (registered elsewhere).
  */
 
-const MODULE_ID = "stream-director";
+const MODULE_ID = "observer-director";
 const MACRO_NAME = "Open Observer Window";
 
 /**
@@ -44,7 +44,7 @@ async function ensureObserverMacro() {
       type: "script",
       scope: "global",
       command,
-      img: "modules/stream-director/assets/LogoSC.jpg",
+      img: "modules/observer-director/assets/LogoSC.jpg",
       ownership: { default: OBS }
     });
     ui.notifications?.info("📺 Observer Window macro created.");

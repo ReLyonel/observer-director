@@ -1,6 +1,6 @@
 {
-  "id": "stream-director",
-  "title": "Stream Director",
+  "id": "observer-director",
+  "title": "Observer Director Pro",
   "description": "Ventana de observador cinemática para Foundry VTT. Proporciona una visualización limpia para streaming y partidas en directo, con anclaje de visión, modo stream, compatibilidad con Ginzzzu Portraits y control de cámara avanzado.",
   "version": "1.0.0",
   "authors": [
@@ -14,7 +14,7 @@
   ],
   "styles": [
     "styles/observer.css",
-    "styles/stream-director.css"
+    "styles/observer-director.css"
   ],
   "languages": [
     {
@@ -42,9 +42,9 @@
     "verified": "13.351"
   },
   "socket": true,
-  "url": "https://github.com/ReLyonel/stream-director",
-  "manifest": "https://raw.githubusercontent.com/ReLyonel/stream-director/main/module.json",
-  "download": "https://github.com/ReLyonel/stream-director/releases/latest/download/module.zip",
+  "url": "https://github.com/ReLyonel/observer-director",
+  "manifest": "https://raw.githubusercontent.com/ReLyonel/observer-director/main/module.json",
+  "download": "https://github.com/ReLyonel/observer-director/releases/latest/download/module.zip",
   "license": "MIT",
   "flags": {}
 }

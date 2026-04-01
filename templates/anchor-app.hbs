@@ -2,7 +2,7 @@
   INSTRUCCIONES DE USO — AnchorVisionApp
   ----------------------------------------
   1. Abre el panel desde: Controles de Escena > ícono de cámara, o ejecuta en consola:
-     game.modules.get('stream-director').api.openAnchorPanel()
+     game.modules.get('observer-director').api.openAnchorPanel()
 
   2. Selecciona el personaje del jugador cuya posición quieres mantener como foco de cámara.
 
@@ -14,7 +14,7 @@
   4. Haz clic en "Liberar" para desactivar el anclaje y recuperar control normal.
 
   MODO STREAM:
-  - Actívalo manualmente: StreamDirector.setStreamMode(true)
+  - Actívalo manualmente: ObserverDirector.setStreamMode(true)
   - Actívalo por URL:     https://tu-servidor/game?stream=true
   - Con anchor panel:     https://tu-servidor/game?stream=true&anchor=true
   - Los retratos de Ginzzzu Portraits siempre permanecen visibles en este modo.

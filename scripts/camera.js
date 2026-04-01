@@ -5,7 +5,7 @@
  * - Works whether socketlib is ready before/after our code runs.
  */
 
-const MODULE_ID = "stream-director";
+const MODULE_ID = "observer-director";
 let socket = null;
 
 /** Optional debug logs for scene/canvas lifecycle. */
@@ -167,7 +167,7 @@ async function _applyCamera(msg) {
   if (!isObserver) return;
 
   // ✅ Skip if follow disabled
-  const followEnabled = game.settings.get("stream-director", "cameraFollow");
+  const followEnabled = game.settings.get("observer-director", "cameraFollow");
   if (!followEnabled) return;
 
   const myScene = canvas?.scene?.id ?? null;

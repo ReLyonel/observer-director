@@ -2,7 +2,7 @@
  * INSTRUCCIONES DE USO — AnchorVisionApp
  * ----------------------------------------
  * 1. Abre el panel desde: Controles de Escena > ícono de cámara, o ejecuta en consola:
- *    game.modules.get('stream-director').api.openAnchorPanel()
+ *    game.modules.get('observer-director').api.openAnchorPanel()
  *
  * 2. Selecciona el personaje del jugador cuya posición quieres mantener como foco de cámara.
  *
@@ -14,13 +14,13 @@
  * 4. Haz clic en "Liberar" para desactivar el anclaje y recuperar control normal.
  *
  * MODO STREAM:
- * - Actívalo manualmente: StreamDirector.setStreamMode(true)
+ * - Actívalo manualmente: ObserverDirector.setStreamMode(true)
  * - Actívalo por URL:     https://tu-servidor/game?stream=true
  * - Con anchor panel:     https://tu-servidor/game?stream=true&anchor=true
  * - Los retratos de Ginzzzu Portraits siempre permanecen visibles en este modo.
  */
 
-const MODULE_ID = "stream-director";
+const MODULE_ID = "observer-director";
 
 export class AnchorVisionApp extends Application {
   constructor(options = {}) {
@@ -35,12 +35,12 @@ export class AnchorVisionApp extends Application {
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      id: "stream-director-anchor-vision",
-      title: game.i18n.localize("STREAM_DIRECTOR.anchorApp.title"),
+      id: "observer-director-anchor-vision",
+      title: game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.title"),
       template: `modules/${MODULE_ID}/templates/anchor-app.hbs`,
       width: 360,
       height: "auto",
-      classes: ["stream-director", "anchor-vision-app"],
+      classes: ["observer-director", "anchor-vision-app"],
       popOut: true,
       resizable: false
     });
@@ -60,10 +60,10 @@ export class AnchorVisionApp extends Application {
       hasTokens: tokens.length > 0,
       tokens,
       canAnchor: this._canAnchor(tokens),
-      selectPlaceholder: game.i18n.localize("STREAM_DIRECTOR.anchorApp.selectPlaceholder"),
-      noTokensLabel: game.i18n.localize("STREAM_DIRECTOR.anchorApp.noTokens"),
-      anchorLabel: game.i18n.localize("STREAM_DIRECTOR.anchorApp.btnAnchor"),
-      releaseLabel: game.i18n.localize("STREAM_DIRECTOR.anchorApp.btnRelease"),
+      selectPlaceholder: game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.selectPlaceholder"),
+      noTokensLabel: game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.noTokens"),
+      anchorLabel: game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.btnAnchor"),
+      releaseLabel: game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.btnRelease"),
       statusText: this._getStatusText(tokens)
     };
   }
@@ -111,7 +111,7 @@ export class AnchorVisionApp extends Application {
 
     if (this._anchoredTokenId && tokenDoc?.id === this._anchoredTokenId) {
       this._releaseAnchor({ notify: false });
-      ui.notifications?.warn(game.i18n.localize("STREAM_DIRECTOR.anchorApp.released"));
+      ui.notifications?.warn(game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.released"));
     }
 
     if (this.rendered) this.render(false);
@@ -127,13 +127,13 @@ export class AnchorVisionApp extends Application {
   }
 
   _getStatusText(tokens) {
-    if (!tokens.length) return game.i18n.localize("STREAM_DIRECTOR.anchorApp.noTokens");
+    if (!tokens.length) return game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.noTokens");
     if (!this._anchoredTokenId) return "";
 
     const anchored = tokens.find((token) => token.id === this._anchoredTokenId);
-    if (!anchored) return game.i18n.localize("STREAM_DIRECTOR.anchorApp.released");
+    if (!anchored) return game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.released");
 
-    return game.i18n.format("STREAM_DIRECTOR.anchorApp.anchoredTo", { name: anchored.name });
+    return game.i18n.format("OBSERVER_DIRECTOR.anchorApp.anchoredTo", { name: anchored.name });
   }
 
   _canAnchor(tokens) {
@@ -168,7 +168,7 @@ export class AnchorVisionApp extends Application {
     this._disableControlTokenHook();
 
     if (notify) {
-      ui.notifications?.info(game.i18n.localize("STREAM_DIRECTOR.anchorApp.released"));
+      ui.notifications?.info(game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.released"));
     }
 
     if (this.rendered) this.render(false);
@@ -203,7 +203,7 @@ export function registerAnchorVisionControls() {
 
     tokenControls.tools.push({
       name: "anchor-vision-app",
-      title: game.i18n.localize("STREAM_DIRECTOR.anchorApp.title"),
+      title: game.i18n.localize("OBSERVER_DIRECTOR.anchorApp.title"),
       icon: "fas fa-camera",
       button: true,
       visible: game.user.isGM,
@@ -221,5 +221,5 @@ export function registerAnchorVisionApi() {
     openAnchorPanel: () => new AnchorVisionApp().render(true)
   };
 
-  // Alias legacy: game.modules.get('observers-director') ya no es válido tras el renombrado.
+  // Alias legacy: los IDs antiguos del módulo ya no son válidos tras el renombrado.
 }

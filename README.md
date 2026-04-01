@@ -1,10 +1,10 @@
-# Stream Director
+# Observer Director Pro
 
-## Migración desde observers-director
-> Si usabas observers-director, desinstálalo antes de instalar Stream Director.  
+## Migración desde stream-director
+> Si usabas stream-director, desinstálalo antes de instalar Observer Director Pro.  
 > Los ajustes de configuración NO se migran automáticamente en esta versión.
 
-Stream Director es un módulo de Foundry VTT que crea una **Observer Window** limpia y cinemática para streaming y partidas en directo.
+Observer Director Pro es un módulo de Foundry VTT que crea una **Observer Window** limpia y cinemática para streaming y partidas en directo.
 
 Diseñado para Foundry VTT **v13.351**.
 
@@ -22,7 +22,7 @@ Diseñado para Foundry VTT **v13.351**.
   - Includes anti-unanchor hook for Levels compatibility.
 
 - **Stream Mode**
-  - Toggle clean stream UI via API (`StreamDirector.setStreamMode(true)`) or URL (`?stream=true`).
+  - Toggle clean stream UI via API (`ObserverDirector.setStreamMode(true)`) or URL (`?stream=true`).
   - Keeps Ginzzzu Portraits visible with explicit CSS exclusions.
 
 - **Scene Banner / Player HUD / Chat Bubbles / Roll Overlay**
@@ -41,7 +41,7 @@ Diseñado para Foundry VTT **v13.351**.
 
 ## ⚙️ Settings
 
-Accessible under **Game Settings → Module Settings → Stream Director**.
+Accessible under **Game Settings → Module Settings → Observer Director Pro**.
 
 ---
 
@@ -60,14 +60,14 @@ Accessible under **Game Settings → Module Settings → Stream Director**.
 
 Manifest URL:
 
-`https://raw.githubusercontent.com/ReLyonel/stream-director/main/module.json`
+`https://raw.githubusercontent.com/ReLyonel/observer-director/main/module.json`
 
 Or install with module metadata:
 
 ```json
 {
-  "id": "stream-director",
-  "title": "Stream Director",
+  "id": "observer-director",
+  "title": "Observer Director Pro",
   "description": "Ventana de observador cinemática para Foundry VTT.",
   "version": "1.0.0",
   "compatibility": {

@@ -1,12 +1,12 @@
 /**
  * @file scripts/settings.js
- * @description Registers all Stream Director settings in one place.
+ * @description Registers all Observer Director Pro settings in one place.
  */
 
 import { JB2ASettingsForm } from "./jb2aSettings.js";
 
 
-const MODULE_ID = "stream-director";
+const MODULE_ID = "observer-director";
 
 /**
  * Register all module settings (world scope).
@@ -24,7 +24,7 @@ export function registerModuleSettings() {
     });
 
     // Toggle: Camera follow (if disabled, observer camera is fixed)
-    game.settings.register("stream-director", "cameraFollow", {
+    game.settings.register("observer-director", "cameraFollow", {
         name: "Enable Camera Follow",
         hint: "If enabled, the observer camera follows the GM’s movements. Disable for live-play displays where you want a fixed view.",
         scope: "world",
@@ -93,7 +93,7 @@ export function registerModuleSettings() {
     });
 
     // Number: Duration of chat message bubbles
-    game.settings.register("stream-director", "chatBubbleDuration", {
+    game.settings.register("observer-director", "chatBubbleDuration", {
         name: "Chat Bubble Duration",
         hint: "How long (in seconds) chat bubbles should stay visible above player cards.",
         scope: "world",
@@ -122,7 +122,7 @@ export function registerModuleSettings() {
         default: "Signika"
     });
 
-    game.settings.registerMenu("stream-director", "jb2aMenu", {
+    game.settings.registerMenu("observer-director", "jb2aMenu", {
         name: "JB2A Configuration",
         label: "Configure JB2A Effects",
         hint: "Optional: Install JB2A (free or Patreon) for animated effects.\n" +
@@ -133,16 +133,16 @@ export function registerModuleSettings() {
         restricted: true
     });
 
-    game.settings.register("stream-director", "jb2aDamage", { scope: "world", config: false, type: String, default: "" });
-    game.settings.register("stream-director", "jb2aHeal", { scope: "world", config: false, type: String, default: "" });
-    game.settings.register("stream-director", "jb2aBlinded", { scope: "world", config: false, type: String, default: "" });
-    game.settings.register("stream-director", "jb2aPoisoned", { scope: "world", config: false, type: String, default: "" });
-    game.settings.register("stream-director", "jb2aStunned", { scope: "world", config: false, type: String, default: "" });
-    game.settings.register("stream-director", "jb2aUnconscious", { scope: "world", config: false, type: String, default: "" });
-    game.settings.register("stream-director", "jb2aFrightened", { scope: "world", config: false, type: String, default: "" });
-    game.settings.register("stream-director", "jb2aRestrained", { scope: "world", config: false, type: String, default: "" });
-    game.settings.register("stream-director", "jb2aProne", { scope: "world", config: false, type: String, default: "" });
-    game.settings.register("stream-director", "jb2aCharmed", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aDamage", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aHeal", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aBlinded", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aPoisoned", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aStunned", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aUnconscious", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aFrightened", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aRestrained", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aProne", { scope: "world", config: false, type: String, default: "" });
+    game.settings.register("observer-director", "jb2aCharmed", { scope: "world", config: false, type: String, default: "" });
 
 }
 

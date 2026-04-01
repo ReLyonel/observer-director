@@ -1,6 +1,6 @@
 ## [2.0.0] — 2026-04-01
 ### Renombrado
-- El módulo se renombra de `observers-director` a `stream-director`.
+- El módulo se renombra de `stream-director` a `observer-director`.
 ### Añadido
 - `AnchorVisionApp`: panel flotante para anclar la cámara a un token de PC.
 - Hook `controlToken` anti-desanclaje para compatibilidad con Levels.
