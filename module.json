@@ -12,6 +12,17 @@
   "esmodules": [
     "scripts/main.js"
   ],
+  "styles": [
+    "styles/observer.css",
+    "styles/stream-director.css"
+  ],
+  "languages": [
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
   "relationships": {
     "requires": [
       {

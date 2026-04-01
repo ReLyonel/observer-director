@@ -17,6 +17,8 @@ import { registerMacroHook } from "./macro.js";
 import { registerModuleSettings } from "./settings.js";
 import { registerRollOverlayHook } from "./rolls.js";
 import { renderPlayerHud } from "./playerHud.js";
+import { AnchorVisionApp, registerAnchorVisionApi, registerAnchorVisionControls } from "./anchor-vision-app.js";
+import { StreamDirector, registerStreamDirectorApi } from "./stream-director.js";
 
 /**
  * Foundry lifecycle: init
@@ -25,14 +27,18 @@ import { renderPlayerHud } from "./playerHud.js";
  */
 Hooks.once("init", async () => {
   console.log("Observer | Initializing Archive of Observers (ESM)");
+  const moduleId = game.modules.get("observers-director") ? "observers-director" : "archive-of-observers";
 
   // Register settings
   registerModuleSettings();
 
   // Register Handlebars partials
   loadTemplates([
-    "modules/archive-of-observers/templates/player-card.hbs"
+    `modules/${moduleId}/templates/player-card.hbs`,
+    `modules/${moduleId}/templates/anchor-app.hbs`
   ]);
+
+  registerAnchorVisionControls();
 });
 
 /**
@@ -130,4 +136,19 @@ Hooks.once("ready", async () => {
 
   // Start the camera sync layer for both windows.
   initCameraSync(isObserver);
+
+  registerAnchorVisionApi();
+  registerStreamDirectorApi();
+
+  // --- URL Params: Stream Director bootstrap (added additively) ---
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("stream") === "true") {
+    // Activar modo stream automáticamente
+    StreamDirector.setStreamMode(true);
+    // Opcional: abrir el anchor panel si también se pasa ?anchor=true
+    if (urlParams.get("anchor") === "true") {
+      new AnchorVisionApp().render(true);
+    }
+    console.log(`[observers-director] ${game.i18n.localize("OBSERVERS_DIRECTOR.streamMode.urlParam")}.`);
+  }
 });
